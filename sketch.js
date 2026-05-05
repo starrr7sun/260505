@@ -15,15 +15,12 @@ function draw() {
   // 計算影像顯示的寬高，為畫布的50%
   let videoWidth = width * 0.5;
   let videoHeight = height * 0.5;
-  // 計算影像在畫布中央的x, y座標
-  let x = (width - videoWidth) / 2;
-  let y = (height - videoHeight) / 2;
 
-  // 修正左右顛倒問題：使用 push/pop 確保翻轉只影響影像繪製
+  // 修正鏡像問題：將畫布原點移至中心並進行水平翻轉
   push();
-  translate(width, 0); // 將原點移動到畫布右側
-  scale(-1, 1);        // 水平翻轉畫布
-  // 因為畫布已翻轉，x 座標會從右側開始計算，由於影像置中，x 的數值維持不變即可
-  image(video, x, y, videoWidth, videoHeight);
+  translate(width / 2, height / 2); // 移動到畫布正中央
+  scale(-1, 1);                     // 水平翻轉 (達成鏡像效果)
+  imageMode(CENTER);                // 設定影像繪製模式為中心點對齊
+  image(video, 0, 0, videoWidth, videoHeight); // 在新的中心原點繪製影像
   pop();
 }
