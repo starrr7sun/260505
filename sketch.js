@@ -26,7 +26,7 @@ function draw() {
   fill(0); // 設定文字顏色（黑色）
   textSize(windowHeight * 0.05); // 根據視窗高度動態調整字體大小
   textAlign(CENTER, CENTER);
-  text("教科414730977", width / 2, height * 0.15); // 顯示在畫布水平中央，垂直位置約在上方 15% 處
+  text("教科123456789", width / 2, height * 0.15); // 顯示在畫布水平中央，垂直位置約在上方 15% 處
 
   // 計算影像顯示的寬高，為畫布的50%
   let videoWidth = width * 0.5;
@@ -40,13 +40,14 @@ function draw() {
   image(video, 0, 0, videoWidth, videoHeight); // 在新的中心原點繪製影像
 
   // 繪製指定的臉部特徵點連線
-  if (faces.length > 0) {
+  if (faces.length > 0 && video.width > 0) {
     let face = faces[0];
     let indices = [409, 270, 269, 267, 0, 37, 39, 40, 185, 61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291];
     
     stroke(255, 0, 0); // 線條採用紅色
     strokeWeight(15);  // 線條粗細為15
-    
+    noFill();          // 確保連線不會產生填充色
+
     for (let i = 0; i < indices.length - 1; i++) {
       let p1 = face.keypoints[indices[i]];
       let p2 = face.keypoints[indices[i + 1]];
