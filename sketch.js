@@ -19,6 +19,11 @@ function draw() {
   let x = (width - videoWidth) / 2;
   let y = (height - videoHeight) / 2;
 
-  // 在計算出的位置和大小顯示攝影機影像
+  // 修正左右顛倒問題：使用 push/pop 確保翻轉只影響影像繪製
+  push();
+  translate(width, 0); // 將原點移動到畫布右側
+  scale(-1, 1);        // 水平翻轉畫布
+  // 因為畫布已翻轉，x 座標會從右側開始計算，由於影像置中，x 的數值維持不變即可
   image(video, x, y, videoWidth, videoHeight);
+  pop();
 }
