@@ -12,6 +12,12 @@ function setup() {
 function draw() {
   background('#e7c6ff'); // 設定畫布背景顏色為e7c6ff
 
+  // 顯示文字：教科123456789
+  fill(0); // 設定文字顏色（黑色）
+  textSize(windowHeight * 0.05); // 根據視窗高度動態調整字體大小
+  textAlign(CENTER, CENTER);
+  text("教科123456789", width / 2, height * 0.15); // 顯示在畫布水平中央，垂直位置約在上方 15% 處
+
   // 計算影像顯示的寬高，為畫布的50%
   let videoWidth = width * 0.5;
   let videoHeight = height * 0.5;
